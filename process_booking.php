@@ -1,55 +1,4 @@
-<?php
-// Enable error reporting for debugging (remove in production)
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
-// Include DB connection
-include "connection.php";
-
-// Secure insert function
-function insertData($table, $data) {
-    global $conn;
-
-    $escaped = array_map(function($value) use ($conn) {
-        return mysqli_real_escape_string($conn, $value);
-    }, $data);
-
-    $fields = implode(", ", array_keys($escaped));
-    $values = "'" . implode("', '", $escaped) . "'";
-
-    $sql_insert = "INSERT INTO $table ($fields) VALUES ($values)";
-    $result = mysqli_query($conn, $sql_insert);
-
-    if (!$result) {
-        echo "<script>alert('MySQL Error: " . mysqli_error($conn) . "');</script>";
-    }
-
-    return $result;
-}
-
-// Handle form submit
-if (isset($_POST['submit'])) {
-    $data = array(
-        'Username' => $_POST['uname'],
-        'Contact' => $_POST['contact'],
-        'Address' => $_POST['address'],
-        'Service' => $_POST['service'],
-        'Datetime' => $_POST['datetime']
-    );
-
-if ($result) {
-    echo "<script>
-        alert('BOOKED SUCCESSFULLY');
-        window.location.href = 'home.php';
-    </script>";
-    exit();
-} else {
-    echo "<script>alert('BOOKED SUCCESSFULLY');
-    window.location.href = 'home.php';</script>";
-}
-
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -163,7 +112,7 @@ if ($result) {
   <main>
     <div id="booking-form">
       <h2>Book a Service</h2>
-      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+      <form method="post" action="index.php">
         <input type="hidden" name="action" value="book">
 
         <label for="uname">Full Name:</label>

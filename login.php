@@ -1,38 +1,4 @@
-<?php
-session_start();
-include "connection.php";
 
-if (isset($_POST['login'])) {
-    $uname = $_POST['uname'];
-    $pass = $_POST['pass'];
-
-$sql_fetch = "SELECT * FROM wis WHERE Username = '$uname'";
-$result = mysqli_query($conn, $sql_fetch);
-
-if (!$result) {
-    die("Query failed: " . mysqli_error($conn)); // helpful debug
-}
-
-if (mysqli_num_rows($result) < 1) {
-    echo "<script>alert('User not found');</script>";
-} else {
-    while ($row = mysqli_fetch_array($result)) {
-        $enc_password = md5($pass);
-        if ($enc_password == $row['Password']) {
-    $_SESSION['UNAME'] = $row['Username'];
-    $_SESSION['FNAME'] = $row['Firstname'];
-    echo "<script>
-        alert('Login successful!');
-        window.location.href = 'home.php';
-    </script>";
-    exit();
-}
-
-    }
-}
-
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -149,7 +115,7 @@ if (mysqli_num_rows($result) < 1) {
   <main>
     <div id="login-form">
       <h2>Login</h2>
-      <form method="post" action="">
+      <form method="post" action="index.php">
         <label for="uname">Username:</label>
         <input type="text" name="uname" required>
 

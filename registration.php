@@ -1,30 +1,4 @@
-<?php
 
-include "connection.php"; // ✅ This must be at the top
-if (isset($_POST['register'])) {
-    $uname = $_POST['uname'];
-    $pass = $_POST['pass'];
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $birth = $_POST['birth'];
-    $email = $_POST['email'];
-    $contact = $_POST['contact'];
-    $enc_password = md5($pass);
-
-    $sql_insert = "INSERT INTO wis (Username, Password, Firstname, Lastname, Birth, Email, Contact) 
-                   VALUES ('$uname', '$enc_password', '$fname', '$lname', '$birth', '$email', '$contact')";
-
-    $result = mysqli_query($conn, $sql_insert);
-
-if ($result) {
-    echo "<script>alert('REGISTERED SUCCESSFULLY'); window.location.href = 'login.php';</script>";
-    exit(); // always good to stop script after redirect
-} else {
-    echo "<script>alert('Registration failed. Please try again.');</script>";
-}
-
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -141,7 +115,7 @@ if ($result) {
   <main>
     <div id="registration-form">
       <h2>Register</h2>
-      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+      <form action="login.php" method="get">
         <label for="uname">Username:</label>
         <input type="text" name="uname" required>
 
@@ -163,7 +137,9 @@ if ($result) {
         <label for="contact">Contact Number:</label>
         <input type="tel" name="contact" required>
 
-        <button name="register">Register</button>
+        
+  <button type="submit" name="register">Register</button>
+</form>
         
       </form>
     </div>
