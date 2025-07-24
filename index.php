@@ -181,39 +181,41 @@
 
 .services .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;        /* even spacing around cards */
+  grid-template-columns: repeat(3, 1fr); /* Always 3 columns */
+  gap: 30px;
+  max-width: 1000px;       /* Ensures gallery doesn't stretch too wide */
+  margin: 0 auto;          /* Center horizontally */
   background-color: black;
   padding: 30px;
+  box-sizing: border-box;
 }
 
 .services .gallery-item {
   background-color: #111;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   text-align: left;
-  width: 100%;       /* fill the grid cell */
-  max-width: 100%;
+  width: 100%;             /* Fill grid cell */
 }
 
-.gallery-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+.services .gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
-.gallery-item .title {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #ff4d4d;
-    padding: 15px 15px 5px;
+.services .gallery-item .title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ff4d4d;
+  padding: 15px 15px 5px;
 }
 
-.gallery-item .description {
-    padding: 0 15px 15px;
-    font-size: 0.95rem;
-    color: #ccc;
+.services .gallery-item .description {
+  padding: 0 15px 15px;
+  font-size: 0.95rem;
+  color: #ccc;
 }
 
         /* CONTACT SECTION */
