@@ -1,152 +1,28 @@
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Register | AUTOCARE</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #111;
-      color: #f1f1f1;
-    }
-
-    header {
-      background-color: #000;
-      color: #ff4d4d;
-      text-align: center;
-      padding: 20px;
-    }
-
-    main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 90vh;
-      padding: 20px;
-    }
-
-    #registration-form {
-      background-color: #1c1c1c;
-      padding: 30px;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 420px;
-      box-shadow: 0 0 15px rgba(255, 77, 77, 0.2);
-    }
-
-    #registration-form h2 {
-      text-align: center;
-      color: #ff4d4d;
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      margin: 12px 0 5px;
-      font-weight: 500;
-    }
-
-    input {
-      width: 100%;
-      height: 44px;
-      padding: 10px 12px;
-      background-color: #222;
-      border: 1px solid #444;
-      border-radius: 6px;
-      color: #fff;
-      box-sizing: border-box;
-      font-size: 15px;
-    }
-
-    input:focus {
-      outline: none;
-      border-color: #ff4d4d;
-      box-shadow: 0 0 5px rgba(255, 77, 77, 0.5);
-    }
-
-    button {
-      width: 100%;
-      height: 44px;
-      padding: 10px;
-      background-color: #ff4d4d;
-      border: none;
-      border-radius: 6px;
-      color: #000;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      margin-top: 10px;
-    }
-
-    button:hover {
-      background-color: #cc0000;
-    }
-
-    footer {
-      background-color: #000;
-      color: #888;
-      text-align: center;
-      padding: 12px;
-      font-size: 0.9em;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-
-    @media (max-width: 500px) {
-      #registration-form {
-        padding: 20px;
-      }
-    }
-  </style>
-</head>
-
+<?php $title = 'Register | AUTOCARE'; $arrow = file_get_contents(__DIR__ . '/inc/arrow.php'); include __DIR__ . '/inc/head.php'; ?>
 <body>
-  <header>
-    <h1>AUTOCARE</h1>
-  </header>
-
-  <main>
-    <div id="registration-form">
-      <h2>Register</h2>
-      <form action="login.php" method="get">
-        <label for="uname">Username:</label>
-        <input type="text" name="uname" required>
-
-        <label for="pass">Password:</label>
-        <input type="password" name="pass" required>
-
-        <label for="fname">First Name:</label>
-        <input type="text" name="fname" required>
-
-        <label for="lname">Last Name:</label>
-        <input type="text" name="lname" required>
-
-        <label for="birth">Date of Birth:</label>
-        <input type="date" name="birth" required>
-
-        <label for="email">Email Address:</label>
-        <input type="email" name="email" required>
-
-        <label for="contact">Contact Number:</label>
-        <input type="tel" name="contact" required>
-
-        
-  <button type="submit" name="register">Register</button>
-</form>
-        
-      </form>
-    </div>
-  </main>
-
-  <footer>
-    <p>© 2025 AUTOCARE — All Rights Reserved<br>Made by Rishi A.</p>
-  </footer>
+<?php include __DIR__ . '/inc/nav.php'; ?>
+<main id="main" class="split">
+  <div class="wipe" data-wipe data-dur="1200"><img class="haze" src="assets/img/lexus.webp" alt=""><img class="clean" src="assets/img/lexus.webp" alt="A white Lexus after ceramic coating"><span class="blade" aria-hidden="true"></span></div>
+  <div class="side"><div class="inner">
+    <h1 class="display rise">Register</h1>
+    <p class="sub rise" style="--d:70ms">Create your AUTOCARE account.</p>
+    <form class="f rise" style="--d:120ms" action="login.php" method="get">
+      <div class="two">
+        <label for="fname">First name<input type="text" id="fname" name="fname" autocomplete="given-name" required></label>
+        <label for="lname">Last name<input type="text" id="lname" name="lname" autocomplete="family-name" required></label>
+      </div>
+      <label for="uname">Username<input type="text" id="uname" name="uname" autocomplete="username" required></label>
+      <label for="pass">Password<input type="password" id="pass" name="pass" autocomplete="new-password" required></label>
+      <label for="birth">Date of birth<input type="date" id="birth" name="birth" autocomplete="bday" required></label>
+      <div class="two">
+        <label for="email">Email address<input type="email" id="email" name="email" autocomplete="email" required></label>
+        <label for="contact">Contact number<input type="tel" id="contact" name="contact" autocomplete="tel" required></label>
+      </div>
+      <button type="submit" name="register" class="btn">Register <?= $arrow ?></button>
+    </form>
+    <p class="alt rise" style="--d:160ms">Already have an account? <a href="login.php">Log in</a></p>
+  </div></div>
+</main>
+<?php include __DIR__ . '/inc/mini-foot.php'; ?>
 </body>
 </html>
